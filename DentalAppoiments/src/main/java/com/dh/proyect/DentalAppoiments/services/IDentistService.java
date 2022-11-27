@@ -10,10 +10,8 @@ public interface IDentistService {
     List<Dentist> listDentist();
 
     // Creating dentist
-    Dentist createDentist(Dentist dentist);
+    Dentist saveDentist(Dentist dentist);
 
-    // Save patient by id
-    Dentist saveDentistById(Long id);
 
     //Find dentist by id
     Dentist findDentist(Long id);

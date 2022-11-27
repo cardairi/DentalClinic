@@ -1,6 +1,7 @@
 package com.dh.proyect.DentalAppoiments.model;
 
-import java.util.Date;
+import java.time.LocalDate;
+
 
 public class Patient {
 
@@ -9,10 +10,10 @@ public class Patient {
     private String lastName;
     private String address;
     private int dni;
-    private Date dischargeDate;
+    private LocalDate dischargeDate;
 
 
-    public Patient(long id, String name, String lastName, int dni, Date dischargeDate) {
+    public Patient(long id, String name, String lastName, int dni, LocalDate dischargeDate) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -52,11 +53,11 @@ public class Patient {
         this.dni = dni;
     }
 
-    public Date getDischargeDate() {
+    public LocalDate getDischargeDate() {
         return dischargeDate;
     }
 
-    public void setDischargeDate(Date dischargeDate) {
+    public void setDischargeDate(LocalDate dischargeDate) {
         this.dischargeDate = dischargeDate;
     }
 }

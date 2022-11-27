@@ -1,4 +1,4 @@
-package com.dh.proyect.DentalAppoiments.dao;
+package com.dh.proyect.DentalAppoiments.repository;
 
 import com.dh.proyect.DentalAppoiments.model.Dentist;
 
@@ -11,10 +11,7 @@ public interface IDao<T> {
     List<T> list();
 
     //Creating dentist
-    T create(T t);
-
-    //Saving records
-    T saveById (Long id);
+    T save(T t);
 
     //Find records
     T findById(Long id);
