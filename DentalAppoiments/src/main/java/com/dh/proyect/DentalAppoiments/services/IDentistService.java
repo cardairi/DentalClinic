@@ -1,23 +1,23 @@
 package com.dh.proyect.DentalAppoiments.services;
 
-import com.dh.proyect.DentalAppoiments.model.Dentist;
+import com.dh.proyect.DentalAppoiments.services.dto.DentistDto;
 
-import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 public interface IDentistService {
 
     // List dentist
-    List<Dentist> listDentist();
+    Set<DentistDto> listDentist();
 
     // Creating dentist
-    Dentist saveDentist(Dentist dentist);
-
+DentistDto createDentist(DentistDto dentistDto);
 
     //Find dentist by id
-    Dentist findDentist(Long id);
+DentistDto findDentist(Long id);
 
     //Modifying dentist by id
-    Dentist modifyDentist(Long id);
+    DentistDto modifyDentist(Long id, DentistDto dentistDto);
 
     // Delete dentist by id
 void deleteDentist(Long id);

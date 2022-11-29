@@ -1,9 +1,6 @@
 package com.dh.proyect.DentalAppoiments.repository;
 
-import com.dh.proyect.DentalAppoiments.model.Dentist;
-
 import java.util.List;
-import java.util.Optional;
 
 public interface IDao<T> {
 

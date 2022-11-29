@@ -1,4 +1,4 @@
-package com.dh.proyect.DentalAppoiments.model;
+package com.dh.proyect.DentalAppoiments.entities;
 
 public class User {
     private Long id;

@@ -1,0 +1,2 @@
+create table IF NOT EXISTS patients(id Longer auto_increment primary key, name varchar(255),lastName varchar (255), dni int, );
+create table IF NOT EXISTS dentist (id Longer auto_increment primary key, registration int, name varchar(255),LastName varchar (255);

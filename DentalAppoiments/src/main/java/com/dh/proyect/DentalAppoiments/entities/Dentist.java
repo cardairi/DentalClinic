@@ -1,26 +1,23 @@
-package com.dh.proyect.DentalAppoiments.model;
+package com.dh.proyect.DentalAppoiments.entities;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name= "dentist" )
 
 public class Dentist {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "dentist_sequence",sequenceName = "dentist_sequence",allocationSize = 1)
     private long id;
+    @Column
     private int registration;
+    @Column
     private String name;
+    @Column
     private String lastName;
 
-
-
-    public Dentist(long id,int registration, String name, String lastName ) {
-        this.id = id;
-        this.registration = registration;
-        this.name = name;
-        this.lastName = lastName;
-
-    }
-
-    public Dentist(int registration, String name, String lastName) {
-        this.registration = registration;
-        this.name = name;
-        this.lastName = lastName;
-    }
 
     public long getId() {
         return id;

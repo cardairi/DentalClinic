@@ -1,0 +1,14 @@
+[2022-11-29 00:24:31] [ INFO ] [DentistController:24] Dentist was created
+[2022-11-29 11:32:29] [ INFO ] [DentistController:25] Dentist was created
+[2022-11-29 11:48:07] [ INFO ] [DentistController:25] Dentist was created
+[2022-11-29 12:29:57] [ ERROR] [DentistController:44] The dentist was found with id: 1
+[2022-11-29 12:32:10] [ ERROR] [DentistController:57] The dentist was not found with id: 1
+[2022-11-29 12:44:32] [ ERROR] [DentistController:56] The dentist was not found with id: 1
+[2022-11-29 12:44:49] [ ERROR] [DentistController:56] The dentist was not found with id: 2
+[2022-11-29 12:49:26] [ ERROR] [DentistController:44] The dentist was found with id: 3
+[2022-11-29 12:49:32] [ ERROR] [DentistController:44] The dentist was found with id: 2
+[2022-11-29 12:49:36] [ ERROR] [DentistController:44] The dentist was found with id: 1
+[2022-11-29 12:50:44] [ INFO ] [DentistController:74] The dentist was eliminated with: 2
+[2022-11-29 12:58:57] [ ERROR] [DentistController:44] The dentist was found with id: 3
+[2022-11-29 13:06:20] [ ERROR] [DentistController:44] The dentist was found with id: 3
+[2022-11-29 13:18:34] [ ERROR] [DentistController:56] The dentist was not found with id: 1

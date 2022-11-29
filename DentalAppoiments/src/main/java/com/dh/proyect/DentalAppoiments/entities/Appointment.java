@@ -1,11 +1,19 @@
-package com.dh.proyect.DentalAppoiments.model;
+package com.dh.proyect.DentalAppoiments.entities;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
 public class Appointment {
+    @Id
+    @SequenceGenerator(name= "appointment_sequence", sequenceName = "appointment_sequence", allocationSize = 1)
+     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "appointment_sequence")
     private Long id;
-
+    @ManyToOne
+    @JoinColumn(name =  "dentist_id")
     private Dentist dentist;
+    @ManyToOne
+    @JoinColumn(name =  "patient_id")
     private Patient patient;
 
     private LocalDate date;

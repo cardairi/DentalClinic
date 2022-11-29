@@ -1,10 +1,15 @@
-package com.dh.proyect.DentalAppoiments.model;
-
+package com.dh.proyect.DentalAppoiments.entities;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 
+@Entity
+@Table(name= "patient" )
+
 public class Patient {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
     private String name;
     private String lastName;

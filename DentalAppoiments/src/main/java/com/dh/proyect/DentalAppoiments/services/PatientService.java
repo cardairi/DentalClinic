@@ -1,48 +1,66 @@
-//package com.dh.proyect.DentalAppoiments.services;
-//import com.dh.proyect.DentalAppoiments.repository.IDao;
-//import com.dh.proyect.DentalAppoiments.model.Patient;
-//import org.apache.log4j.Logger;
-//import java.util.List;
-//
-//public class PatientService {
-//
-//        private static final Logger LOGGER = Logger.getLogger(PatientService.class);
-//    private final IDao<Patient> patientDao;
-//
-//    //Constructor
-//    public PatientService(IDao<Patient> patientDao) {
-//        this.patientDao = patientDao;
-//    }
-//
-//    // List patient
-//    public List<Patient> listPatient() {
-//        LOGGER.info("List Patient" );
-//        return patientDao.list();
-//    }
-//    // Creating patient
-//    public Patient createPatient(Patient patient) {
-//        return patientDao.create(patient);
-//    }
-//
-//    // Save patient by id
-//    public Patient saveById(Long id){
-//        return patientDao.saveById(id);
-//    }
-//
-//    //Find patient by id
-//    public Patient findPatient(Long id){
-//        return patientDao.findById(id);
-//    }
-//    //Modifying patient
-//    public Patient modifyPatient(Long id){
-//        return patientDao.modifyById(id);
-//    }
-//
-//    // Delete patient
-//    public Patient deletePatient(Long id) {
-//        return patientDao.deleteById(id);
-//    }
-//
-//}
-//
+package com.dh.proyect.DentalAppoiments.services;
+import com.dh.proyect.DentalAppoiments.entities.Dentist;
+import com.dh.proyect.DentalAppoiments.entities.Patient;
+import com.dh.proyect.DentalAppoiments.repository.impl.PatientRepository;
+import com.dh.proyect.DentalAppoiments.services.dto.PatientDto;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+
+@Service
+public class PatientService implements IPatientService {
+
+    @Autowired
+    private PatientRepository patientRepository;
+    private static final Logger LOGGER = Logger.getLogger(PatientService.class);
+
+    // List patient
+
+    @Override
+    public List<Patient> listPatients() {
+        return patientRepository.findAll();
+    }
+
+    @Autowired
+    ObjectMapper mapper;
+
+    //Creating patient
+    @Override
+    public Patient createPatient(PatientDto patientDto) {
+        Patient newPatient = mapper.convertValue(patientDto, Patient.class);
+        return patientRepository.save(newPatient);
+    }
+
+    //Find patient by id
+    @Override
+    public Optional<Patient> findPatient(Long id) {
+        return patientRepository.findById(id);
+    }
+
+    //Modifying patient by id
+    @Override
+    public Patient modifyPatient(Long id, PatientDto patientDto) {
+        Optional<Patient> patientToModify = findPatient(id);
+        if (patientToModify.isPresent()) {
+            patientToModify.get().setName(patientDto.name != null ? patientDto.name : patientToModify.get().getName());
+            patientToModify.get().setLastName(patientDto.lastName != null ? patientDto.lastName : patientToModify.get().getLastName());
+        }
+        return patientRepository.save(patientToModify.get());
+    }
+
+    // Delete patient by id
+    @Override
+    public boolean deletePatient(Long id) {
+        Optional<Patient> patient = findPatient(id);
+        if (patient.isPresent()) {
+            patientRepository.deleteById(id);
+        }
+        return false;
+    }
+}
 
