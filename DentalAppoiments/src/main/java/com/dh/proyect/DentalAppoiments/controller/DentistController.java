@@ -52,12 +52,12 @@ public class DentistController {
     @PutMapping("update/{id}")
     public ResponseEntity<DentistDto> modifyingDentist(@PathVariable Long id, @RequestBody DentistDto dentistDto) {
         ResponseEntity<DentistDto> dentistDtoResponseEntity = null;
-        if (dentistService.findDentist(id) == null) {
-            LOGGER.error("The dentist was not found with id: " + id);
-            dentistDtoResponseEntity = new ResponseEntity (HttpStatus.NOT_FOUND);
-        } else {
-            LOGGER.info("The dentist was found and modify with id: " + id);
+        if (dentistService.findDentist(id) != null) {
+            LOGGER.error("The dentist was found and modified with id: " + id);
             dentistDtoResponseEntity = new ResponseEntity (dentistService.modifyDentist(id, dentistDto), HttpStatus.OK);
+        } else {
+            LOGGER.info("The dentist wasn't found and modify with id: " + id);
+            dentistDtoResponseEntity = new ResponseEntity (HttpStatus.NOT_FOUND);
         }
         return dentistDtoResponseEntity;
     }

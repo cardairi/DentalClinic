@@ -3,22 +3,23 @@ import com.dh.proyect.DentalAppoiments.entities.Patient;
 import com.dh.proyect.DentalAppoiments.services.dto.PatientDto;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.Set;
 
 public interface IPatientService {
-    List<Patient> listPatients();
+
+    //List Patient
+    Set<PatientDto> listPatients();
 
     // Creating patient
-    Patient createPatient(PatientDto patientDto);
+    PatientDto createPatient(PatientDto patientDto);
 
-    //Find patient by id
-    Optional<Patient> findPatient(Long id);
+    //Find  patient by id
+    PatientDto findPatient(Long id);
 
-    //Modifying patient by id
-   Patient modifyPatient(Long id, PatientDto patientDto);
-
-    // Delete patient by id
-    boolean deletePatient(Long id);
-
+    //Modifying dentist by id
+    PatientDto modifyPatient(Long id, PatientDto patientDto);
+    // Delete dentist by id
+    void deletePatient(Long id);
 
 }
+

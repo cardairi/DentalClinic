@@ -2,7 +2,6 @@ package com.dh.proyect.DentalAppoiments.services;
 
 import com.dh.proyect.DentalAppoiments.services.dto.DentistDto;
 
-import java.util.Optional;
 import java.util.Set;
 
 public interface IDentistService {

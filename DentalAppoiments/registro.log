@@ -12,3 +12,5 @@
 [2022-11-29 12:58:57] [ ERROR] [DentistController:44] The dentist was found with id: 3
 [2022-11-29 13:06:20] [ ERROR] [DentistController:44] The dentist was found with id: 3
 [2022-11-29 13:18:34] [ ERROR] [DentistController:56] The dentist was not found with id: 1
+[2022-11-29 13:29:21] [ INFO ] [DentistController:59] The dentist was found and modify with id: 1
+[2022-11-29 13:30:04] [ INFO ] [DentistController:75] The dentist was eliminated with: 1
