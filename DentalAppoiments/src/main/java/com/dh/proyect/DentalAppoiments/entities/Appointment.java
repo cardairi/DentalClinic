@@ -1,65 +1,34 @@
 package com.dh.proyect.DentalAppoiments.entities;
-
+import lombok.Getter;
+import lombok.Setter;
 import javax.persistence.*;
 import java.time.LocalDate;
 
+
+@Getter
+@Setter
 @Entity
 public class Appointment {
-    @Id
-    @SequenceGenerator(name= "appointment_sequence", sequenceName = "appointment_sequence", allocationSize = 1)
-     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "appointment_sequence")
-    private Long id;
-    @ManyToOne
-    @JoinColumn(name =  "dentist_id")
-    private Dentist dentist;
-    @ManyToOne
-    @JoinColumn(name =  "patient_id")
-    private Patient patient;
+        @Id
+        @SequenceGenerator(name = "turno_sequence", sequenceName = "turno_sequence", allocationSize = 1)
+        @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "turno_sequence")
+        private Long id;
 
-    private LocalDate date;
+        @ManyToOne
+        @JoinColumn(name =  "patient_id",  nullable = false)
+        private Patient patient;
 
-    public Appointment(Long id, Dentist dentist, Patient patient, LocalDate date) {
-        this.id = id;
-        this.dentist = dentist;
-        this.patient = patient;
-        this.date = date;
-    }
+        @ManyToOne
+        @JoinColumn(name =  "dentist_id", nullable = false)
+        private Dentist dentist;
 
-    public Appointment(Dentist dentist, Patient patient, LocalDate date) {
-        this.dentist = dentist;
-        this.patient = patient;
-        this.date = date;
-    }
+        private LocalDate dischargeDate;
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Dentist getDentist() {
-        return dentist;
-    }
-
-    public void setDentist(Dentist dentist) {
-        this.dentist = dentist;
-    }
-
-    public Patient getPatient() {
-        return patient;
-    }
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
+//        public Appointment(Long id, Patient patient, Dentist dentist, LocalDate dischargeDate) {
+//                this.id = id;
+//                this.patient = patient;
+//                this.dentist = dentist;
+//                this.dischargeDate = dischargeDate;
+//        }
 }

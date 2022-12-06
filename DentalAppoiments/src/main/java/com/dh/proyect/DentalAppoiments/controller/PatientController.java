@@ -1,86 +1,80 @@
-//package com.dh.proyect.DentalAppoiments.controller;
-//import com.dh.proyect.DentalAppoiments.entities.Patient;
-//import com.dh.proyect.DentalAppoiments.services.PatientService;
-//import com.dh.proyect.DentalAppoiments.services.dto.PatientDto;
-//import org.apache.log4j.LogManager;
-//import org.apache.log4j.Logger;
-//import org.springframework.http.HttpStatus;
-//import org.springframework.http.ResponseEntity;
-//import org.springframework.web.bind.annotation.*;
-//import java.util.ArrayList;
-//import java.util.List;
-//import java.util.Optional;
-//@RestController
-//@RequestMapping("/patient")
-//
-//
-//public class PatientController {
-//    private PatientService patientService;
-//    private static final Logger LOGGER = LogManager.getLogger(PatientController.class);
-//
-//
-//    //Creating a new dentist
-//    @PostMapping
-//    public ResponseEntity<PatientDto> createPatient(@RequestBody PatientDto patientDto) {
-//        LOGGER.info("A new patient was created");
-//        return ResponseEntity.ok(mapEntityToDto(patientService.createPatient(patientDto)));
-//    }
-//    // List of dentist
-//    @GetMapping
-//    public  ResponseEntity <List<PatientDto>> listPatient() {
-//        List<PatientDto> patientDtos = new ArrayList<>();
-//        LOGGER.info("List of patients");
-//        for (Patient p : patientService.listPatients()) {
-//            patientDtos.add(mapEntityToDto(p));
-//        }
-//        return ResponseEntity.ok(patientDtos);
-//    }
-//
-//    //Fining Dentist
-//    @GetMapping("/{id}")
-//    public ResponseEntity <Patient> findingPatientById (@PathVariable Long id, @RequestBody PatientDto patientDto)  {
-//        Optional<Patient> patientToFound = patientService.findPatient(patientDto.getId());
-//        if  (patientToFound.isPresent()){
-//            LOGGER.info("The patient was found with id: " + id);
-//            return ResponseEntity.ok(patientToFound.get());
-//        }
-//        else{
-//            LOGGER.info("No patient was found with id: " + id);
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-//        }
-//    }
-//
-//    //modifying dentists
-//    @PutMapping ("update/{id}")
-//    public ResponseEntity<Patient> modifyingPatient (@PathVariable Long id, @RequestBody PatientDto patientDto) {
-//        Optional<Patient> patientToModify = patientService.findPatient(patientDto.getId());
-//        if (patientToModify.isPresent()) {
-//            LOGGER.info("The patient was updated with id: " + id);
-//            return ResponseEntity.ok(patientService.modifyPatient(id, patientDto));
-//        } else {
-//            LOGGER.error("No patient was found with id: " + id);
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-//        }
-//    }
-//    //Delete Dentist
-//    @DeleteMapping( "delete/{id}")
-//    public ResponseEntity<PatientDto> deletePatient(@PathVariable Long id) {
-//        if (patientService.deletePatient(id)){
-//            LOGGER.info("The patient was eliminated with: " + id);
-//            return ResponseEntity.status(HttpStatus.OK).build();
-//        } else {
-//            LOGGER.error("The patient was not found with id: " + id);
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-//        }
-//    }
-//
-//    private PatientDto mapEntityToDto(Patient patientEntity) {
-//        PatientDto patientDto = new PatientDto();
-//        patientDto.id = patientEntity.getId();
-//        patientDto.name = patientEntity.getName();
-//        patientDto.lastName = patientEntity.getLastName();
-//        patientDto.dni = patientEntity.getDni();
-//        return patientDto;
-//    }
-//}
-//
+package com.dh.proyect.DentalAppoiments.controller;
+import com.dh.proyect.DentalAppoiments.services.PatientService;
+import com.dh.proyect.DentalAppoiments.services.dto.PatientDto;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Set;
+
+@RestController
+@RequestMapping("/patient")
+
+public class PatientController {
+
+    @Autowired
+    private PatientService patientService;
+    private static final Logger LOGGER = LogManager.getLogger(PatientController.class);
+
+    //Creating a new dentist
+    @PostMapping("/create")
+    public ResponseEntity<PatientDto> registerANewPatient(@RequestBody PatientDto patientDto) {
+        LOGGER.info("The patient was created");
+        return ResponseEntity.ok(patientService.createPatient(patientDto));
+    }
+
+    // List of dentist
+    @GetMapping("/list")
+    public ResponseEntity <Set<PatientDto>> listPatient() {
+        LOGGER.info("The patients were listed");
+        return ResponseEntity.ok(patientService.listPatients());
+    }
+
+    //Fining Dentist
+    @GetMapping("/{id}")
+    public ResponseEntity<PatientDto> findPatientById(@PathVariable("id") Long id) {
+        ResponseEntity<PatientDto> patientDtoResponseEntity = null;
+        if (patientService.findPatient(id) == null) {
+            LOGGER.error("The patient was not found with id: " + id);
+            patientDtoResponseEntity  = new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            LOGGER.error("The patient was found with id: " + id);
+            patientDtoResponseEntity  = new ResponseEntity<>(patientService.findPatient(id), HttpStatus.OK);
+        }
+        return patientDtoResponseEntity ;
+
+    }
+
+    //modifying dentists
+    @PutMapping("update/{id}")
+    public ResponseEntity<PatientDto> modifyingPatient(@PathVariable Long id, @RequestBody PatientDto patientDto) {
+    ResponseEntity<PatientDto> patientDtoResponseEntity = null;
+        if (patientService.findPatient(id) != null) {
+            LOGGER.error("The dentist was found and modified with id: " + id);
+            patientDtoResponseEntity = new ResponseEntity (patientService.modifyPatient(id, patientDto), HttpStatus.OK);
+        } else {
+            LOGGER.info("The dentist wasn't found and modify with id: " + id);
+        patientDtoResponseEntity= new ResponseEntity (HttpStatus.NOT_FOUND);
+        }
+        return patientDtoResponseEntity;
+    }
+
+    //Delete Dentist
+    @DeleteMapping("delete/{id}")
+    public ResponseEntity<PatientDto> deletePatient(@PathVariable Long id) {
+        ResponseEntity<PatientDto> patientDtoResponseEntity = null;
+        if (patientService.findPatient(id) == null) {
+            LOGGER.error("The patient was not found with id: " + id);
+            patientDtoResponseEntity = new ResponseEntity(HttpStatus.NOT_FOUND);
+        } else {
+            patientService.deletePatient(id);
+            patientDtoResponseEntity = new ResponseEntity(HttpStatus.NO_CONTENT);
+            LOGGER.info("The patient was eliminated with: " + id);
+        }
+        return patientDtoResponseEntity;
+    }
+
+}

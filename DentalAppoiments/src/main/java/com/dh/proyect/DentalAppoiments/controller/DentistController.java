@@ -23,14 +23,16 @@ public class DentistController {
 
     //Creating a new dentist
     @PostMapping("/create")
-    public ResponseEntity<DentistDto> registrarNuevoOdontologo(@RequestBody DentistDto dentistDto) {
+    public ResponseEntity<DentistDto>registerANewPatient(@RequestBody DentistDto dentistDto) {
+        LOGGER.info("The dentist was created");
         return ResponseEntity.ok(dentistService.createDentist(dentistDto));
     }
 
     // List of dentist
     @GetMapping
-    public Set<DentistDto> listDentist() {
-        return dentistService.listDentist();
+    public ResponseEntity< Set<DentistDto>> listDentist() {
+        LOGGER.info("The dentists were listed");
+        return ResponseEntity.ok(dentistService.listDentist());
     }
 
     //Fining Dentist
@@ -39,10 +41,10 @@ public class DentistController {
         ResponseEntity<DentistDto> dentistDtoResponseEntity = null;
         if (dentistService.findDentist(id) == null) {
             LOGGER.error("The dentist was not found with id: " + id);
-            dentistDtoResponseEntity = new ResponseEntity<DentistDto>(HttpStatus.NOT_FOUND);
+            dentistDtoResponseEntity = new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             LOGGER.error("The dentist was found with id: " + id);
-            dentistDtoResponseEntity = new ResponseEntity<DentistDto>(dentistService.findDentist(id), HttpStatus.OK);
+            dentistDtoResponseEntity = new ResponseEntity<>(dentistService.findDentist(id), HttpStatus.OK);
         }
         return dentistDtoResponseEntity;
 

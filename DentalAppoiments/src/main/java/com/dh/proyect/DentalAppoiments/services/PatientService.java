@@ -3,6 +3,7 @@ import com.dh.proyect.DentalAppoiments.entities.Patient;
 import com.dh.proyect.DentalAppoiments.repository.impl.PatientRepository;
 import com.dh.proyect.DentalAppoiments.services.dto.PatientDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,13 +15,13 @@ import java.util.Set;
 
 @Service
 public class PatientService implements IPatientService {
-
     @Autowired
     private PatientRepository patientRepository;
+
+    //Logger methods
     private static final Logger LOGGER = Logger.getLogger(PatientService.class);
 
     // List patient
-
     @Override
     public Set<PatientDto> listPatients() {
         List<Patient> PatientEntityList = patientRepository.findAll();

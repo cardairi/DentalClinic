@@ -1,57 +1,34 @@
 package com.dh.proyect.DentalAppoiments.entities;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
+@Setter
+@Getter
 @Entity
 @Table(name= "dentist" )
 
 public class Dentist {
+                @Id
+                @GeneratedValue(strategy = GenerationType.IDENTITY)
+                @SequenceGenerator(name = "dentist_sequence",sequenceName = "dentist_sequence",allocationSize = 1)
+                private long id;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @SequenceGenerator(name = "dentist_sequence",sequenceName = "dentist_sequence",allocationSize = 1)
-    private long id;
-    @Column
-    private int registration;
-    @Column
-    private String name;
-    @Column
-    private String lastName;
+                private int registration;
 
+                private String name;
 
-    public long getId() {
-        return id;
-    }
+                private String lastName;
 
-    public void setId(long id) {
-        this.id = id;
-    }
+                @OneToMany(mappedBy = "dentist")
+                @JsonIgnore
+                private Set<Appointment> appointments;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public int getRegistration() {
-        return registration;
-    }
-
-    public void setRegistration(int registration) {
-        this.registration = registration;
-    }
-
-    @Override
+                @Override
     public String toString() {
         return "Dentist{" +
                 "id=" + id +
