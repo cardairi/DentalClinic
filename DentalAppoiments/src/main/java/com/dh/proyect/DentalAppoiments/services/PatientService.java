@@ -1,9 +1,10 @@
 package com.dh.proyect.DentalAppoiments.services;
 import com.dh.proyect.DentalAppoiments.entities.Patient;
+import com.dh.proyect.DentalAppoiments.exceptions.BadRequestException;
+import com.dh.proyect.DentalAppoiments.exceptions.ResourceNotFoundException;
 import com.dh.proyect.DentalAppoiments.repository.impl.PatientRepository;
 import com.dh.proyect.DentalAppoiments.services.dto.PatientDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,8 @@ import java.util.Set;
 public class PatientService implements IPatientService {
     @Autowired
     private PatientRepository patientRepository;
+    @Autowired
+    ObjectMapper mapper;
 
     //Logger methods
     private static final Logger LOGGER = Logger.getLogger(PatientService.class);
@@ -27,14 +30,12 @@ public class PatientService implements IPatientService {
         List<Patient> PatientEntityList = patientRepository.findAll();
         Set<PatientDto> patientDto = new HashSet<>();
         for (Patient p : PatientEntityList) {
+            LOGGER.info("Patients was listed");
             patientDto.add(mapper.convertValue(p, PatientDto.class));
 
         }
         return patientDto;
     }
-
-    @Autowired
-    ObjectMapper mapper;
 
     //Creating patient
     @Override
@@ -42,9 +43,10 @@ public class PatientService implements IPatientService {
         Patient patient = mapper.convertValue(patientDto, Patient.class);
         patientRepository.save(patient);
         PatientDto patientDto1 = mapper.convertValue(patient, PatientDto.class);
-        LOGGER.info("Patients were listed" );
+        LOGGER.info("Patient was created");
         return patientDto1;
     }
+
 
     //Find patient by id
     @Override
@@ -63,7 +65,7 @@ public class PatientService implements IPatientService {
 
     //Modifying patient by id
     @Override
-    public PatientDto modifyPatient(Long id, PatientDto patientDto) {
+    public PatientDto modifyPatient(Long id, PatientDto patientDto) throws ResourceNotFoundException {
         PatientDto patientDtoModify = null;
         Optional<Patient> patientToModify = patientRepository.findById(id);
         if (patientToModify.isPresent()) {
@@ -74,18 +76,22 @@ public class PatientService implements IPatientService {
             patientDtoModify = mapper.convertValue(patientToModify, PatientDto.class);
         } else {
             LOGGER.error("No patient were found with id: " + id);
+            throw new ResourceNotFoundException("The dentist  is not exist whit the id:" + id);
         }
         return patientDto;
     }
 
     // Delete patient by id
     @Override
-    public void deletePatient(Long id) {
+    public void deletePatient(Long id) throws ResourceNotFoundException {
         PatientDto patientDtoDelete = null;
         Optional<Patient> patient = patientRepository.findById(id);
-        if (patient.isPresent()) {
+        if ( patient.isPresent()) {
             LOGGER.info("The patient was deleted");
             patientRepository.deleteById(id);
+        } else {
+            LOGGER.error("The patient was not found with id: " + id);
+            throw new ResourceNotFoundException("The patient is not exist whit the id:" + id);
         }
     }
 }

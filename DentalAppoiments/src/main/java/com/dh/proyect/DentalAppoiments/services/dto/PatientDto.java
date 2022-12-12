@@ -1,5 +1,6 @@
 package com.dh.proyect.DentalAppoiments.services.dto;
 
+import com.dh.proyect.DentalAppoiments.entities.Address;
 import com.dh.proyect.DentalAppoiments.entities.Patient;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,7 +14,7 @@ public class PatientDto {
     public Long id;
     public String name;
     public String lastName;
-    public String address;
+    public Address address;
     public int dni;
     private LocalDate dischargeDate;
 

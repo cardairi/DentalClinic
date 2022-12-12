@@ -1,5 +1,7 @@
 package com.dh.proyect.DentalAppoiments.services;
 import com.dh.proyect.DentalAppoiments.entities.Dentist;
+import com.dh.proyect.DentalAppoiments.exceptions.BadRequestException;
+import com.dh.proyect.DentalAppoiments.exceptions.ResourceNotFoundException;
 import com.dh.proyect.DentalAppoiments.repository.impl.DentistRepository;
 import com.dh.proyect.DentalAppoiments.services.dto.DentistDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,6 +9,8 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -19,7 +23,7 @@ public class DentistService implements IDentistService {
     @Autowired
     ObjectMapper mapper;
     @Autowired
-    private DentistRepository dentistRepository;
+    private final DentistRepository dentistRepository;
 
     public DentistService(DentistRepository dentistRepository) {
         this.dentistRepository = dentistRepository;
@@ -30,10 +34,11 @@ public class DentistService implements IDentistService {
 
     // List dentist
     @Override
-    public Set<DentistDto> listDentist() {
+    public Set<DentistDto> listDentist()  {
         List<Dentist> dentistEntityList = dentistRepository.findAll();
         Set<DentistDto> dentistDto = new HashSet<>();
         for (Dentist d : dentistEntityList) {
+            LOGGER.info("Patients was listed");
             dentistDto.add(mapper.convertValue(d, DentistDto.class));
         }
         return dentistDto;
@@ -42,9 +47,10 @@ public class DentistService implements IDentistService {
     // Creating dentist
     @Override
     public DentistDto createDentist(DentistDto dentistDto) {
-        Dentist dentist =  mapper.convertValue(dentistDto, Dentist.class);
+        Dentist dentist = mapper.convertValue(dentistDto, Dentist.class);
         dentistRepository.save(dentist);
         DentistDto dentistDto1 = mapper.convertValue(dentist, DentistDto.class);
+        LOGGER.info("Dentist was created" );
         return dentistDto1;
     }
 
@@ -64,28 +70,32 @@ public class DentistService implements IDentistService {
 
     //Modifying dentist by id
     @Override
-    public DentistDto modifyDentist(Long id, DentistDto dentistDto) {
+    public DentistDto modifyDentist(Long id, DentistDto dentistDto) throws ResourceNotFoundException {
         DentistDto dentistDtoModify = null;
         Optional<Dentist> dentistToModify = dentistRepository.findById(id);
         if (dentistToModify.isPresent()) {
-            dentistToModify .get().setName(dentistDto.name != null ? dentistDto.name : dentistToModify.get().getName());
-            dentistToModify .get().setLastName(dentistDto.lastName != null ? dentistDto.lastName : dentistToModify .get().getLastName());
+            dentistToModify.get().setName(dentistDto.name != null ? dentistDto.name : dentistToModify.get().getName());
+            dentistToModify.get().setLastName(dentistDto.lastName != null ? dentistDto.lastName : dentistToModify.get().getLastName());
             LOGGER.info("The dentist was updated with id: " + id);
-            dentistDtoModify =  mapper.convertValue(dentistToModify, DentistDto.class);
+            dentistDtoModify = mapper.convertValue(dentistToModify, DentistDto.class);
         } else {
             LOGGER.error("No dentists were found with id: " + id);
-    }
+            throw new ResourceNotFoundException("The dentist  is not exist whit the id:" + id);
+        }
         return dentistDto;
     }
 
     // Delete dentist by id
     @Override
-    public void deleteDentist(Long id) {
+    public void deleteDentist(Long id) throws ResourceNotFoundException {
         DentistDto dentistDtoDelete = null;
         Optional<Dentist> dentist = dentistRepository.findById(id);
         if (dentist.isPresent()) {
             LOGGER.info("The dentist was deleted");
             dentistRepository.deleteById(id);
+        } else {
+            LOGGER.error("The dentist was not found with id: " + id);
+            throw new ResourceNotFoundException("The dentist  is not exist whit the id:" + id);
         }
     }
 }

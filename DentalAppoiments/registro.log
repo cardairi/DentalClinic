@@ -16,3 +16,180 @@
 [2022-11-29 13:30:04] [ INFO ] [DentistController:75] The dentist was eliminated with: 1
 [2022-12-04 19:15:14] [ INFO ] [PatientService:44] Patients were listed
 [2022-12-04 19:15:28] [ INFO ] [PatientService:44] Patients were listed
+[2022-12-05 21:16:15] [ INFO ] [PatientController:25] The patient was created
+[2022-12-05 21:16:16] [ INFO ] [PatientService:45] Patients were listed
+[2022-12-05 21:18:12] [ INFO ] [PatientController:25] The patient was created
+[2022-12-05 21:18:12] [ INFO ] [PatientService:45] Patients were listed
+[2022-12-05 21:20:47] [ INFO ] [PatientController:25] The patient was created
+[2022-12-05 21:20:47] [ INFO ] [PatientService:45] Patients were listed
+[2022-12-05 21:26:35] [ INFO ] [DentistController:27] The dentist was created
+[2022-12-05 21:28:35] [ INFO ] [PatientService:58] No patient were found with id: 0
+[2022-12-05 21:28:35] [ INFO ] [DentistService:60] No dentists were found with id: 0
+[2022-12-05 21:28:35] [ INFO ] [AppointmentController:41] The appointment was not created
+[2022-12-05 21:29:30] [ INFO ] [PatientService:58] No patient were found with id: 0
+[2022-12-05 21:29:30] [ INFO ] [DentistService:60] No dentists were found with id: 0
+[2022-12-05 21:29:30] [ INFO ] [AppointmentController:41] The appointment was not created
+[2022-12-05 21:30:37] [ INFO ] [PatientService:55] The patient was found with id: 1
+[2022-12-05 21:30:37] [ INFO ] [AppointmentController:45] The appointment was created
+[2022-12-05 21:31:45] [ INFO ] [AppointmentService:44] The appointment was listed
+[2022-12-05 21:31:45] [ INFO ] [AppointmentService:44] The appointment was listed
+[2022-12-05 21:31:45] [ INFO ] [AppointmentController:57] List of existing appointment.
+[2022-12-05 21:31:45] [ INFO ] [AppointmentService:44] The appointment was listed
+[2022-12-09 01:14:32] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 01:14:52] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 01:14:59] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 01:15:22] [ INFO ] [DentistController:35] The dentists were listed
+[2022-12-09 01:15:58] [ INFO ] [DentistService:58] The dentist was found with id: 1
+[2022-12-09 01:17:05] [ INFO ] [DentistController:35] The dentists were listed
+[2022-12-09 01:17:24] [ INFO ] [DentistService:58] The dentist was found with id: 2
+[2022-12-09 01:18:34] [ INFO ] [DentistController:35] The dentists were listed
+[2022-12-09 01:19:02] [ INFO ] [DentistService:58] The dentist was found with id: 3
+[2022-12-09 01:19:37] [ INFO ] [DentistController:35] The dentists were listed
+[2022-12-09 01:20:06] [ INFO ] [DentistService:61] No dentists were found with id: 5
+[2022-12-09 01:20:06] [ ERROR] [DentistController:73] The dentist was not found with id: 5
+[2022-12-09 01:20:11] [ INFO ] [DentistService:58] The dentist was found with id: 1
+[2022-12-09 01:24:06] [ INFO ] [DentistController:35] The dentists were listed
+[2022-12-09 01:24:18] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 01:24:29] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 01:24:34] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 01:24:42] [ INFO ] [DentistController:35] The dentists were listed
+[2022-12-09 01:24:58] [ INFO ] [DentistService:58] The dentist was found with id: 1
+[2022-12-09 01:24:58] [ INFO ] [DentistService:90] The dentist was deleted
+[2022-12-09 01:24:58] [ INFO ] [DentistController:78] The dentist was eliminated with: 1
+[2022-12-09 01:25:14] [ INFO ] [DentistController:35] The dentists were listed
+[2022-12-09 01:25:30] [ INFO ] [DentistService:61] No dentists were found with id: 5
+[2022-12-09 01:25:30] [ ERROR] [DentistController:73] The dentist was not found with id: 5
+[2022-12-09 01:26:12] [ INFO ] [DentistService:61] No dentists were found with id: 4
+[2022-12-09 01:26:12] [ ERROR] [DentistController:73] The dentist was not found with id: 4
+[2022-12-09 01:29:13] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 01:29:19] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 01:29:23] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 01:29:41] [ INFO ] [DentistController:35] The dentists were listed
+[2022-12-09 01:29:55] [ INFO ] [DentistService:58] The dentist was found with id: 2
+[2022-12-09 01:29:55] [ INFO ] [DentistService:90] The dentist was deleted
+[2022-12-09 01:29:55] [ INFO ] [DentistController:78] The dentist was eliminated with: 2
+[2022-12-09 01:33:25] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 01:33:27] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 01:33:28] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 01:33:29] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 01:34:06] [ INFO ] [DentistController:35] The dentists were listed
+[2022-12-09 01:35:02] [ INFO ] [DentistService:58] The dentist was found with id: 2
+[2022-12-09 01:35:02] [ INFO ] [DentistService:90] The dentist was deleted
+[2022-12-09 01:35:02] [ INFO ] [DentistController:78] The dentist was eliminated with: 2
+[2022-12-09 01:40:08] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 01:40:10] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 01:40:12] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 01:40:25] [ INFO ] [DentistController:35] The dentists were listed
+[2022-12-09 01:41:23] [ INFO ] [DentistService:58] The dentist was found with id: 1
+[2022-12-09 01:42:29] [ INFO ] [DentistService:90] The dentist was deleted
+[2022-12-09 01:42:29] [ INFO ] [DentistController:78] The dentist was eliminated with: 1
+[2022-12-09 01:43:36] [ INFO ] [DentistController:35] The dentists were listed
+[2022-12-09 01:44:52] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 01:44:53] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 01:44:54] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 01:44:55] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 01:45:22] [ INFO ] [DentistService:58] The dentist was found with id: 1
+[2022-12-09 01:45:22] [ INFO ] [DentistService:90] The dentist was deleted
+[2022-12-09 01:45:22] [ INFO ] [DentistController:78] The dentist was eliminated with: 1
+[2022-12-09 01:46:23] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 01:46:24] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 01:46:25] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 01:46:26] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 01:46:31] [ INFO ] [DentistController:35] The dentists were listed
+[2022-12-09 01:46:37] [ INFO ] [DentistService:58] The dentist was found with id: 1
+[2022-12-09 01:46:53] [ INFO ] [DentistService:58] The dentist was found with id: 1
+[2022-12-09 01:47:46] [ INFO ] [DentistService:90] The dentist was deleted
+[2022-12-09 01:47:46] [ INFO ] [DentistController:78] The dentist was eliminated with: 1
+[2022-12-09 01:48:31] [ INFO ] [DentistService:61] No dentists were found with id: 1
+[2022-12-09 01:48:31] [ ERROR] [DentistController:44] The dentist was not found with id: 1
+[2022-12-09 02:12:49] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 02:12:50] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 02:12:51] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 02:12:52] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 02:12:55] [ INFO ] [DentistController:35] The dentists were listed
+[2022-12-09 02:13:01] [ INFO ] [DentistService:58] The dentist was found with id: 1
+[2022-12-09 02:13:01] [ INFO ] [DentistController:47] The dentist was found with id: 1
+[2022-12-09 02:13:01] [ INFO ] [DentistService:58] The dentist was found with id: 1
+[2022-12-09 02:13:11] [ INFO ] [DentistService:58] The dentist was found with id: 1
+[2022-12-09 02:13:11] [ INFO ] [DentistController:47] The dentist was found with id: 1
+[2022-12-09 02:13:11] [ INFO ] [DentistService:58] The dentist was found with id: 1
+[2022-12-09 02:14:04] [ INFO ] [DentistController:35] The dentists were listed
+[2022-12-09 02:15:30] [ INFO ] [DentistController:35] The dentists were listed
+[2022-12-09 02:26:55] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 02:26:56] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 02:26:57] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 02:26:58] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 02:27:04] [ INFO ] [DentistController:35] The dentists were listed
+[2022-12-09 02:27:27] [ INFO ] [DentistController:35] The dentists were listed
+[2022-12-09 02:27:42] [ INFO ] [DentistService:88] The dentist was deleted
+[2022-12-09 02:28:31] [ ERROR] [DentistService:91] The dentist was not found with id: 6
+[2022-12-09 02:54:43] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 02:54:47] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 02:54:48] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 02:54:49] [ INFO ] [DentistController:28] The dentist was created
+[2022-12-09 02:54:51] [ INFO ] [DentistController:35] The dentists were listed
+[2022-12-09 02:55:54] [ INFO ] [DentistController:35] The dentists were listed
+[2022-12-09 02:57:52] [ INFO ] [DentistService:76] The dentist was updated with id: 2
+[2022-12-09 02:58:00] [ INFO ] [DentistController:35] The dentists were listed
+[2022-12-09 02:58:16] [ INFO ] [DentistService:76] The dentist was updated with id: 2
+[2022-12-09 02:58:34] [ INFO ] [DentistController:35] The dentists were listed
+[2022-12-09 02:59:58] [ INFO ] [DentistService:76] The dentist was updated with id: 2
+[2022-12-09 03:00:04] [ ERROR] [DentistService:79] No dentists were found with id: 6
+[2022-12-09 03:00:15] [ INFO ] [DentistService:76] The dentist was updated with id: 1
+[2022-12-09 03:00:27] [ INFO ] [DentistController:35] The dentists were listed
+[2022-12-11 15:08:01] [ INFO ] [DentistController:26] The dentist was created
+[2022-12-11 15:08:01] [ INFO ] [DentistService:52] Dentist was created
+[2022-12-11 15:08:20] [ INFO ] [DentistController:33] The dentists were listed
+[2022-12-11 15:08:21] [ INFO ] [DentistService:40] Patients was listed
+[2022-12-11 15:08:31] [ INFO ] [DentistService:94] The dentist was deleted
+[2022-12-11 15:08:31] [ INFO ] [DentistController:56] The dentist was successfully deleted
+[2022-12-11 15:08:34] [ INFO ] [DentistController:33] The dentists were listed
+[2022-12-11 15:21:14] [ INFO ] [PatientController:25] The patient was created
+[2022-12-11 15:21:32] [ INFO ] [PatientService:45] Patient was created
+[2022-12-11 15:22:20] [ INFO ] [PatientController:25] The patient was created
+[2022-12-11 15:23:18] [ INFO ] [PatientService:45] Patient was created
+[2022-12-11 15:29:07] [ INFO ] [PatientController:25] The patient was created
+[2022-12-11 15:29:51] [ INFO ] [PatientService:45] Patient was created
+[2022-12-11 15:30:58] [ INFO ] [PatientController:25] The patient was created
+[2022-12-11 15:31:06] [ INFO ] [PatientService:45] Patient was created
+[2022-12-11 15:35:36] [ INFO ] [PatientController:25] The patient was created
+[2022-12-11 15:35:36] [ INFO ] [PatientService:46] Patient was created
+[2022-12-11 15:44:49] [ INFO ] [PatientController:25] The patient was created
+[2022-12-11 15:44:55] [ INFO ] [PatientService:46] Patient was created
+[2022-12-11 15:46:28] [ INFO ] [PatientController:25] The patient was created
+[2022-12-11 15:47:11] [ INFO ] [PatientService:46] Patient was created
+[2022-12-11 15:48:25] [ INFO ] [PatientController:25] The patient was created
+[2022-12-11 15:48:26] [ INFO ] [PatientService:46] Patient was created
+[2022-12-11 15:49:03] [ INFO ] [PatientController:25] The patient was created
+[2022-12-11 15:49:03] [ INFO ] [PatientService:46] Patient was created
+[2022-12-11 15:52:30] [ INFO ] [PatientController:25] The patient was created
+[2022-12-11 15:52:30] [ INFO ] [PatientService:46] Patient was created
+[2022-12-11 15:55:46] [ INFO ] [PatientController:25] The patient was created
+[2022-12-11 15:57:05] [ INFO ] [PatientController:25] The patient was created
+[2022-12-11 15:57:22] [ INFO ] [PatientController:25] The patient was created
+[2022-12-11 15:57:28] [ INFO ] [PatientService:46] Patient was created
+[2022-12-11 15:58:26] [ INFO ] [PatientController:25] The patient was created
+[2022-12-11 15:58:32] [ INFO ] [PatientService:46] Patient was created
+[2022-12-11 15:59:18] [ INFO ] [PatientController:32] The patients were listed
+[2022-12-11 15:59:18] [ INFO ] [PatientService:33] Patients was listed
+[2022-12-11 15:59:18] [ INFO ] [PatientService:33] Patients was listed
+[2022-12-11 15:59:37] [ INFO ] [PatientService:57] The patient was found with id: 1
+[2022-12-11 16:31:06] [ INFO ] [DentistController:27] The dentist was created
+[2022-12-11 16:31:06] [ INFO ] [DentistService:54] Dentist was created
+[2022-12-11 16:31:08] [ INFO ] [DentistController:27] The dentist was created
+[2022-12-11 16:31:08] [ INFO ] [DentistService:54] Dentist was created
+[2022-12-11 16:31:13] [ INFO ] [DentistController:34] The dentists were listed
+[2022-12-11 16:31:13] [ INFO ] [DentistService:42] Patients was listed
+[2022-12-11 16:31:13] [ ERROR] [AppointmentController:24] Something went wrong with the request
+[2022-12-11 16:36:08] [ INFO ] [DentistController:27] The dentist was created
+[2022-12-11 16:36:08] [ INFO ] [DentistService:53] Dentist was created
+[2022-12-11 16:36:10] [ INFO ] [DentistController:27] The dentist was created
+[2022-12-11 16:36:10] [ INFO ] [DentistService:53] Dentist was created
+[2022-12-11 16:36:13] [ INFO ] [DentistController:34] The dentists were listed
+[2022-12-11 16:36:13] [ INFO ] [DentistService:41] Patients was listed
+[2022-12-11 16:36:13] [ INFO ] [DentistService:41] Patients was listed
+[2022-12-11 16:36:26] [ INFO ] [DentistService:94] The dentist was deleted
+[2022-12-11 16:36:26] [ INFO ] [DentistController:57] The dentist was successfully deleted
+[2022-12-11 16:36:30] [ INFO ] [DentistService:94] The dentist was deleted
+[2022-12-11 16:36:30] [ INFO ] [DentistController:57] The dentist was successfully deleted
+[2022-12-11 16:36:34] [ INFO ] [DentistController:34] The dentists were listed

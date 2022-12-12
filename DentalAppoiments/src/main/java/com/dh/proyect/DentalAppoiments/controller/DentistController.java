@@ -1,5 +1,6 @@
 package com.dh.proyect.DentalAppoiments.controller;
-
+import com.dh.proyect.DentalAppoiments.exceptions.BadRequestException;
+import com.dh.proyect.DentalAppoiments.exceptions.ResourceNotFoundException;
 import com.dh.proyect.DentalAppoiments.services.DentistService;
 import com.dh.proyect.DentalAppoiments.services.dto.DentistDto;
 import org.apache.log4j.LogManager;
@@ -8,8 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.*;
+import java.util.Set;
 
 
 @RestController
@@ -29,54 +29,33 @@ public class DentistController {
     }
 
     // List of dentist
-    @GetMapping
-    public ResponseEntity< Set<DentistDto>> listDentist() {
+    @GetMapping("/list")
+    public ResponseEntity< Set<DentistDto>> listDentist() throws BadRequestException, Exception {
         LOGGER.info("The dentists were listed");
         return ResponseEntity.ok(dentistService.listDentist());
     }
 
-    //Fining Dentist
+    //Finding Dentist
     @GetMapping("/{id}")
-    public ResponseEntity<DentistDto> findDentistById(@PathVariable("id") Long id) {
-        ResponseEntity<DentistDto> dentistDtoResponseEntity = null;
-        if (dentistService.findDentist(id) == null) {
-            LOGGER.error("The dentist was not found with id: " + id);
-            dentistDtoResponseEntity = new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } else {
-            LOGGER.error("The dentist was found with id: " + id);
-            dentistDtoResponseEntity = new ResponseEntity<>(dentistService.findDentist(id), HttpStatus.OK);
-        }
-        return dentistDtoResponseEntity;
-
+    public ResponseEntity<DentistDto> findDentistById(@PathVariable Long id, @RequestBody DentistDto dentistDto) throws ResourceNotFoundException {
+        LOGGER.info("The dentist was found with id: " + id);
+        return ResponseEntity.ok(dentistService.findDentist(id));
     }
 
     //modifying dentists
     @PutMapping("update/{id}")
-    public ResponseEntity<DentistDto> modifyingDentist(@PathVariable Long id, @RequestBody DentistDto dentistDto) {
-        ResponseEntity<DentistDto> dentistDtoResponseEntity = null;
-        if (dentistService.findDentist(id) != null) {
-            LOGGER.error("The dentist was found and modified with id: " + id);
-            dentistDtoResponseEntity = new ResponseEntity (dentistService.modifyDentist(id, dentistDto), HttpStatus.OK);
-        } else {
-            LOGGER.info("The dentist wasn't found and modify with id: " + id);
-            dentistDtoResponseEntity = new ResponseEntity (HttpStatus.NOT_FOUND);
-        }
-        return dentistDtoResponseEntity;
+    public ResponseEntity<DentistDto> modifyingDentist(@PathVariable Long id, @RequestBody DentistDto dentistDto) throws ResourceNotFoundException, Exception {
+        LOGGER.info("The dentist was updated with id: " + id);
+        return ResponseEntity.ok(dentistService.modifyDentist(id, dentistDto));
     }
+
 
     //Delete Dentist
     @DeleteMapping("delete/{id}")
-    public ResponseEntity<DentistDto> deleteDentist(@PathVariable Long id) {
-        ResponseEntity<DentistDto> dentistDtoResponseEntity = null;
-        if (dentistService.findDentist(id) == null) {
-            LOGGER.error("The dentist was not found with id: " + id);
-            dentistDtoResponseEntity = new ResponseEntity(HttpStatus.NOT_FOUND);
-        } else {
-            dentistService.deleteDentist(id);
-            dentistDtoResponseEntity = new ResponseEntity(HttpStatus.NO_CONTENT);
-            LOGGER.info("The dentist was eliminated with: " + id);
-        }
-            return dentistDtoResponseEntity;
+    public ResponseEntity<String> deleteDentist(@PathVariable Long id) throws ResourceNotFoundException, Exception {
+        dentistService.deleteDentist(id);
+        LOGGER.info("The dentist was successfully deleted");
+        return ResponseEntity.status(HttpStatus.OK).body("The dentist was eliminated");
     }
 
 }

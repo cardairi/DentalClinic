@@ -13,13 +13,13 @@ import java.util.Set;
 public class Address {
             @Id
             @GeneratedValue(strategy = GenerationType.IDENTITY)
-            private Long id;
+            private long id;
             private String street;
             private int number;
             private String city;
 
-    @OneToMany(mappedBy = "address")
-    @JsonIgnore
+ @OneToMany(mappedBy = "address")
+   @JsonIgnore
     private Set<Patient> patients;
 
 }

@@ -15,6 +15,13 @@ public class DentistDto {
     public String name;
     public String lastName;
 
+    public DentistDto(Integer registration, String name, String lastName) {
+        this.registration = registration;
+        this.name = name;
+        this.lastName = lastName;
+    }
 }
+
+
 
 

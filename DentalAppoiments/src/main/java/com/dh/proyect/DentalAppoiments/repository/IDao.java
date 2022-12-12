@@ -18,4 +18,6 @@ public interface IDao<T> {
 
     //Delete Dentist
     T deleteById(Long id);
+
+    void save(T dentist, IDao<T> services);
 }

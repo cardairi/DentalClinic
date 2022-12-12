@@ -1,12 +1,17 @@
 package com.dh.proyect.DentalAppoiments.services;
 import com.dh.proyect.DentalAppoiments.entities.Appointment;
+import com.dh.proyect.DentalAppoiments.entities.Dentist;
+import com.dh.proyect.DentalAppoiments.exceptions.ResourceNotFoundException;
 import com.dh.proyect.DentalAppoiments.repository.impl.AppointmentRepository;
 import com.dh.proyect.DentalAppoiments.services.dto.AppointmentDto;
+import com.dh.proyect.DentalAppoiments.services.dto.DentistDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -57,7 +62,7 @@ public class AppointmentService implements IAppoitmentService {
 
     //Find appointment by id
     @Override
-    public AppointmentDto findAppointment(Long id) {
+    public AppointmentDto findAppointment(Long id)  {
             AppointmentDto appointmentDto = null;
             Optional<Appointment> appointmentToFound = appointmentRepository.findById(id);
             if (appointmentToFound.isPresent()) {
@@ -65,12 +70,13 @@ public class AppointmentService implements IAppoitmentService {
                 return appointmentDto = mapper.convertValue(appointmentToFound, AppointmentDto.class);
             } else {
                 LOGGER.info("No appointment were found with id: " + id);
+
             }
             return appointmentDto;
     }
     //Modifying appointment by id
     @Override
-    public AppointmentDto modifyAppointment(Long id, AppointmentDto appointmentDto) {
+    public AppointmentDto modifyAppointment(Long id, AppointmentDto appointmentDto) throws ResourceNotFoundException {
         AppointmentDto appointmentDtoModify = null;
         Optional<Appointment> appointmentToModify =appointmentRepository.findById(id);
         if (appointmentToModify .isPresent()) {
@@ -78,20 +84,24 @@ public class AppointmentService implements IAppoitmentService {
                  appointmentToModify.get().setPatient(appointmentDto.patient != null ?  appointmentDto.patient : appointmentToModify.get().getPatient());
                  appointmentToModify.get().setDischargeDate(appointmentDto.dischargeDate != null ?  appointmentDto.dischargeDate : appointmentToModify.get().getDischargeDate());
                     LOGGER.info("The appointment was updated with id: " + id);
-            appointmentDto =  mapper.convertValue(appointmentToModify, AppointmentDto.class);
+            appointmentDtoModify =  mapper.convertValue(appointmentToModify, AppointmentDto.class);
                 } else {
                     LOGGER.error("No appointment were found with id: " + id);
+                    throw new ResourceNotFoundException("The appointment is not exist whit the id:" + id);
                 }
                 return appointmentDto;
     }
     // Delete appointment by id
     @Override
-    public void deleteAppointment(Long id) {
-        AppointmentDto dentistDtoDelete = null;
-        Optional<Appointment> appointment= appointmentRepository.findById(id);
+    public void deleteAppointment(Long id) throws ResourceNotFoundException {
+        AppointmentDto appoitmentDtoDelete = null;
+        Optional<Appointment> appointment = appointmentRepository.findById(id);
         if (appointment.isPresent()) {
             LOGGER.info("The appointment was deleted");
             appointmentRepository.deleteById(id);
+        } else {
+            LOGGER.error("The appointment was not found with id: " + id);
+            throw new ResourceNotFoundException("The appointment is not exist whit the id:" + id);
         }
     }
 }
